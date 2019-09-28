@@ -41,11 +41,7 @@ getDnsRecordName() {
 }
 
 verifyToken() {
-  cloudflare -o /dev/null -w "%{http_code}" "$CF_API/zones?name=$ZONE"
-}
-
-getZoneId() {
-  cloudflare "$CF_API/zones?name=$ZONE" | jq -r '.result[0].id'
+  cloudflare -o /dev/null -w "%{http_code}" "$CF_API/zones/$ZONE"
 }
 
 getDnsRecordId() {

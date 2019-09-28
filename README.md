@@ -20,6 +20,7 @@ Quick Setup:
 docker run \
   -e API_TOKEN=xxxxxxx \
   -e ZONE=example.com \
+  -e ZONE_ID=xxxxxxx \
   -e SUBDOMAIN=subdomain \
   oznu/cloudflare-ddns
 ```
@@ -30,6 +31,7 @@ This image will also run on a Raspberry Pi or other ARM based boards that suppor
 docker run \
   -e API_TOKEN=xxxxxxx \
   -e ZONE=example.com \
+  -e ZONE_ID=xxxxxxx \
   -e SUBDOMAIN=subdomain \
   oznu/cloudflare-ddns:armhf
 ```
@@ -39,6 +41,7 @@ docker run \
 * `--restart=always` - ensure the container restarts automatically after host reboot.
 * `-e API_TOKEN` - Your CloudFlare API Token. Get it here: https://dash.cloudflare.com/profile/api-tokens. **Required**
 * `-e ZONE` - The DNS zone that DDNS updates should be applied to. **Required**
+* `-e ZONE_ID` - The DNS zone ID that matches the provided ZONE. **Required**
 * `-e SUBDOMAIN` - A subdomain of the `ZONE` to write DNS changes to. If this is not supplied the root zone will be used.
 * `-e PROXIED` - Set to `true` to make traffic go through the CloudFlare CDN. Defaults to `false`.
 * `-e RRTYPE=A` - Set to `AAAA` to use set IPv6 records instead of IPv4 records. Defaults to `A` for IPv4 records.
@@ -65,6 +68,7 @@ services:
     environment:
       - API_TOKEN=xxxxxxx
       - ZONE=example.com
+      - ZONE_ID=xxxxxxx
       - SUBDOMAIN=subdomain
       - PROXIED=false
 ```

@@ -4,8 +4,7 @@ cloudflare() {
   curl -sSL \
     -H "Accept: application/json" \
     -H "Content-Type: application/json" \
-    -H "X-Auth-Email: $EMAIL" \
-    -H "X-Auth-Key: $API_KEY" \
+    -H "Authorization: Bearer $API_TOKEN" \
     "$@"
 }
 

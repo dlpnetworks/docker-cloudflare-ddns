@@ -18,8 +18,7 @@ Quick Setup:
 
 ```shell
 docker run \
-  -e EMAIL=hello@example.com \
-  -e API_KEY=xxxxxxx \
+  -e API_TOKEN=xxxxxxx \
   -e ZONE=example.com \
   -e SUBDOMAIN=subdomain \
   oznu/cloudflare-ddns
@@ -29,8 +28,7 @@ This image will also run on a Raspberry Pi or other ARM based boards that suppor
 
 ```shell
 docker run \
-  -e EMAIL=hello@example.com \
-  -e API_KEY=xxxxxxx \
+  -e API_TOKEN=xxxxxxx \
   -e ZONE=example.com \
   -e SUBDOMAIN=subdomain \
   oznu/cloudflare-ddns:armhf
@@ -39,8 +37,7 @@ docker run \
 ## Parameters
 
 * `--restart=always` - ensure the container restarts automatically after host reboot.
-* `-e EMAIL` - Your CloudFlare email address. **Required**
-* `-e API_KEY` - Your CloudFlare API Key. Get it here: https://www.cloudflare.com/a/profile. **Required**
+* `-e API_TOKEN` - Your CloudFlare API Token. Get it here: https://dash.cloudflare.com/profile/api-tokens. **Required**
 * `-e ZONE` - The DNS zone that DDNS updates should be applied to. **Required**
 * `-e SUBDOMAIN` - A subdomain of the `ZONE` to write DNS changes to. If this is not supplied the root zone will be used.
 * `-e PROXIED` - Set to `true` to make traffic go through the CloudFlare CDN. Defaults to `false`.
@@ -66,8 +63,7 @@ services:
     image: oznu/cloudflare-ddns:latest # change 'latest' to 'armhf' or 'aarch64' if running on an arm device
     restart: always
     environment:
-      - EMAIL=hello@example.com
-      - API_KEY=xxxxxxx
+      - API_TOKEN=xxxxxxx
       - ZONE=example.com
       - SUBDOMAIN=subdomain
       - PROXIED=false

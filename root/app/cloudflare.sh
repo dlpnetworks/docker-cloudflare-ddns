@@ -41,7 +41,7 @@ getDnsRecordName() {
 }
 
 verifyToken() {
-  cloudflare -o /dev/null -w "%{http_code}" "$CF_API"/user
+  cloudflare -o /dev/null -w "%{http_code}" "$CF_API/zones?name=$ZONE"
 }
 
 getZoneId() {
